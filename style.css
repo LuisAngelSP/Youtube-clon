@@ -1,0 +1,450 @@
+@import url('https://fonts.googleapis.com/css2? family= Roboto:wght@400;500 & display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*------------Variables gobales---------- */
+:root{
+    /*colores base*/
+    --accent-color      :#ff0000;
+    --grey-color        :#909090;
+    --grey-color-alt    :#ccc;
+    --border-color      : rgba(0,0,0,0.1);
+
+    /*Color Fondo*/   
+    --bg-color          : #fff;
+    --bg-color-alt      : #f9f9f9;
+    --bg-color-active   : #e5e5e5;
+    
+    /*Colores de Texto*/
+    --text-color        : #030303;
+    --text-color-alt    : #606060;
+    --text-color-white  : #fff;
+
+    /*Texto*/
+    --body-font         :   'Roboto', sans-serif;
+    --icon-font         :   'icomoon';
+
+    /*Tamaño de texto*/
+    --big-font-size     :   1.125rem; /*18px*/
+    --normal-font-size  :   1rem; /*16px*/
+    --small-font-size   :   0.875rem;/*14px*/
+    --smaller-fonr-size :   0.750rem;/*12px*/
+    --font-bold         :   500;
+
+
+    /*Otros-altura de cabecera*/
+
+    --header-height     : 56px;
+    --sidebar-width     :248px;
+    --z-tooltip         : 25;
+    --z-fixed           : 100;
+    --border-radius     :2px;
+    --transition-time   : 0.25s;
+    
+ /*---------SCROLL--------------*/
+
+ --scroll-size      : 16px;          /*tamaño del scroll*/
+ --scroll-bg        : transparent;  /* backgroup de scroll*/
+ --scroll-radius    : 8px;           /* borde redondeado de sroll*/
+ --scroll-padding   : 4px;           /*separacion interno de scroll*/
+ --thumb-bg         :var(--grey-color);   /*fondo de barra */
+ --thum-bg-alt      :var(--grey-color-alt);  /*fonde de barra alternativa*/
+ 
+}
+
+
+body{
+    font-family: var(--body-font);
+    background-color: var(--bg-color-alt);
+    line-height: 1.15rem;
+    padding-top: var(--header-height);
+    padding-left: var(--sidebar-width);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+b{
+    font-family: var(--body-font);
+
+}
+
+button{
+    font-family: var(--body-font);
+}
+
+img{
+    width: 100%;
+}
+
+hr{
+    --spacing   : 0.75rem;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: var(--spacing);
+    padding-top: var(--spacing);
+}
+
+.flex_{
+    display: flex;
+}
+
+.placer-center{
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+}
+.button-container{
+    display : flex;
+    gap     : 0.5rem;
+}
+/*-------scroll-----------*/
+.scroll::-webkit-scrollbar{
+    width: var(--scroll-size);  /*scroll  en x*/
+    height: var(--scroll-size); /*scroll  en y*/
+
+}
+
+.scroll::-webkit-scrollbar-thumb{
+    background-color: var(--thumb-bg);
+    border-radius: var(--scroll-radius);
+    border: var(--scroll-padding) solid transparent;
+    background-clip: content-box;
+}
+
+.scroll::-webkit-scrollbar-thumb:hover{
+
+    background-color: var(--thum-bg-alt);
+}
+/*scroll que no sea body accedemos a la barra de desplazamiento*/
+.scroll:not(body)::-webkit-scrollbar-thumb{
+    display: none;
+    background-color: var(--thum-bg-alt);
+}
+.scroll:not(body):hover::-webkit-scrollbar-thumb{
+    display: block;
+}
+/*----------Cabecera Principal--------*/
+
+.main-header{
+    background-color: var(--bg-color);
+    position         : fixed;
+    width            : 100%;
+    left             : 0;
+    top              : 0;
+    display          : flex;
+    justify-content  : space-between;
+    align-items      : center;
+    padding          : 0 1rem;
+    height           : var(--header-height);
+    z-index          : var(--z-fixed);
+}
+
+.main-header .start .action-button{
+    margin-right: 1rem;
+}
+.main-header .logo{
+    width: 6rem;
+}
+/*------------Buscardor Princiaal-----------------*/
+
+.main-header .middle{
+    flex-basis  : 720px;
+    padding     : 0 2rem;
+
+}
+.main-header .form-search{
+    flex-grow   : 1;
+    align-items : stretch;
+}
+.main-header .input{
+    flex-grow       : 1;
+    padding         : 0.5rem;
+    border          : 1px solid var(--border-color);
+    border-right    : 0;
+    border-radius   : var(--border-radius) 0 0 var(--border-radius);
+}
+.main-header .submit{
+    padding         : 0 1.5rem;
+    border          : 1px solid var(--border-color);
+    color           : var(--text-color-alt);
+    font-size       : 1.25rem;
+    border-radius   : 0 var(--border-radius)  var(--border-radius) 0;
+    cursor          : pointer;
+}
+
+.main-header .user{
+    padding: 0 1rem;
+}
+
+
+
+/*--------AVATAR DEL USUARIO---------------*/ 
+
+.user-avatar{
+
+    --size  : 2rem;
+    width   : var(--size);
+    height  : var(--size);
+    cursor  : pointer;
+    flex    :none;
+
+}
+
+
+
+.user-avatar .image{
+
+    width       : 100%;
+    height      :  100%;
+    object-fit  : cover;
+    border-radius: 50%;
+
+}
+
+/*-------------- BOTTONES DE ACCION ----------------*/
+
+.action-button{
+    --size  : 2.5rem;
+    height:  var(--size);
+    width: var(--size);
+    border-radius: 50%;
+    border: 1px solid transparent;
+    background: none;
+    cursor: pointer;
+    transition: border-color var(--transition-time);
+}
+
+.action-button::before{
+
+     color       : var(--text-color-alt);
+     font-size   : 1.5rem ;
+}
+
+.action-button:active{
+    background-color:var(--bg-color-active) ;
+    border-color: var(--bg-color-active) ;
+}
+
+/*----------- Creando Tooltip-------------------*/
+
+[data-tooltip]{
+    position: relative;
+}
+
+[data-tooltip]:hover::after{
+    opacity     : 1;
+}
+
+/*selector de variables []*/
+[data-tooltip]::after{
+
+    content     : attr(data-tooltip);
+    position    : absolute;
+    left        : 50%;
+    top         : 3.5rem;
+    transform: translateX(-50%);
+    padding     : 0.5rem;
+    background-color: var(--text-color-alt);
+    color           : var(--text-color-white);
+    font-family     : var(--body-font);
+    font-size       : var(--smaller-fonr-size);
+    border-radius   : var(--border-radius);
+    white-space     : nowrap;
+    opacity         : 0; 
+    pointer-events  : none;
+    transition      : opacity var(--transition-time);
+    z-index         : var(--z-tooltip);
+
+}
+
+
+/*=====================Menu-lateral================================*/
+
+.main-sidebar{
+    --main-nav-padding : 0.5rem 1.5rem;
+    position: fixed;
+    top     : var(--header-height);
+    left    : 0;
+    z-index : 1;
+    height  : calc(100vh - var(--header-height) );
+    width   : var(--sidebar-width);
+    background-color: var(--bg-color);
+    padding: 0.75rem 0;
+    overflow: auto;
+}
+/*------Items de navegación---------*/
+.main-nav .link{
+    display : flex;
+    align-items : center;
+    padding: var(--main-nav-padding);
+    color: var(--text-color);
+    font-size: var(--small-font-size);
+    text-decoration: none;
+    white-space: nowrap;
+
+}
+
+.main-nav .link.is-active,
+.main-nav .link:hover{
+    background-color: var(--bg-color-alt);
+}
+.main-nav .link.is-active{
+
+    font-weight: var(--font-bold);
+}
+
+
+/*-----Iconos de la navegación------*/
+.main-nav .link .icon{
+    
+    font-size   : 1.5rem ;
+    color       : var(--text-color-alt);
+}
+
+.main-nav .link.is-in-live::after,
+.main-nav .link.is-new::after{
+
+    content: var(--link-icon);
+    font-family: var(--icon-font);
+    margin-left: auto;
+}
+
+.main-nav .link.is-in-live::after{
+    content:'\e911';
+    color: var(--accent-color);
+}
+.main-nav .link.is-new::after{
+    content:'\e91b';
+    color: #065fd4;
+    font-size: 0.5rem;
+}
+
+.main-nav .link .user-avatar{
+    --size: 1.5rem;
+}
+
+.main-nav .link .icon,
+.main-nav .link .user-avatar{
+    margin-right: 1.5rem;
+}
+
+.main-nav .link.is-active .icon{
+
+    color: var(--accent-color);
+
+}
+
+/*---------------Titulo de secciones en navegacion lateral----------------------*/
+
+.nav-title{
+    padding: var(--main-nav-padding);
+    color: var(--text-color-alt);
+    font-size: var(--small-font-size);
+    text-transform: uppercase;
+}
+
+/*-------footer de la navegacion lateral--------------*/
+
+.main-nav-footer{
+    display: grid;
+    gap: 0.75rem;
+    padding: var(--main-nav-padding);
+    font-size: var(--smaller-fonr-size);
+
+}
+
+.main-nav-footer .link-footer{
+    margin-right: 0.5rem;
+    line-height: 1.4;;
+    text-decoration: none;
+    font-weight: var(--font-bold);
+    color: var(--text-color-alt);
+}
+
+.main-nav-footer .copyright{
+    opacity: 0.6;
+    color: var(--text-color-alt);
+    margin: 0;
+
+}
+
+
+/*-----------TARJETA DE VIDEO-------------------*/
+.card-video{
+    /* max-width: 300px; */
+}
+
+.card-video a{
+    text-decoration: none;
+    color: inherit;
+}
+.card-video .cover {
+    
+    display: block;
+    position: relative;
+    aspect-ratio: 16/9;
+    margin-bottom: 0.75rem;
+    
+}
+
+.card-video .image {
+    display     : block;
+    height      : 100%;
+    object-fit  : cover;
+}
+
+.card-video .time{
+    position        :absolute ;
+    right           : 1rem;
+    bottom          : 1rem;
+    background-color : rgba(0,0,0,0.8);
+    color: var(--text-color-white);
+    font-size: var(--smaller-fonr-size);
+    border-radius: var(--border-radius);
+
+}
+
+.card-video .user-avatar{
+    --size      : 36px;
+    margin-right: 0.75rem;
+}
+
+.card-video .content{
+    font-size: var(--small-font-size);
+    color    : var(--text-color-alt);
+}
+
+.card-video .title{
+    color: var(--text-color);
+    margin-bottom: 0.25rem;
+}
+/*---Informacion del Video--------*/
+
+.video-information .views{
+    display: inline-flex;
+}
+
+.video-information .views::after{
+
+    content:'\e91b';
+    font-family: var(--icon-font);
+    font-size: 0.25rem;
+    padding: 0 0.25rem;
+}
+
+/*------------GRIP DE VIDEOS---------------------*/
+
+.card-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(300px, 1fr));
+    gap: 2rem 1rem;
+    padding: 1rem 2rem;
+}
